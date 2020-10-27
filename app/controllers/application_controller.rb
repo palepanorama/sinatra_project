@@ -1,4 +1,4 @@
-require './config/environment'
+require'./config/environment'
 
 class ApplicationController < Sinatra::Base
 
@@ -10,5 +10,4 @@ class ApplicationController < Sinatra::Base
   get "/" do
     erb :welcome
   end
-
 end
