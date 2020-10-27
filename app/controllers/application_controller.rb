@@ -7,10 +7,6 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
   end
 
-  get "/" do
-    erb :welcome
-  end
-
   helpers do 
     def logged_in?
       !!session[:user_id]
@@ -18,5 +14,6 @@ class ApplicationController < Sinatra::Base
 
     def current_user 
       User.find(session[:user_id])
+    end 
   end 
 end

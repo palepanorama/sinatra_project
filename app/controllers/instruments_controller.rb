@@ -1,4 +1,4 @@
-class InstrumenTsController < ApplicationController
+class InstrumentsController < ApplicationController
 
   # GET: /instruments
   get "/instruments" do
