@@ -1,12 +1,7 @@
 class UsersController < ApplicationController 
 
-    get "/" do
-        erb :'users/welcome'
-    end
-
     get '/signup' do 
-        binding.pry 
-        erb :'users/signup'
+        "yo" 
     end 
 
     post '/signup' do 

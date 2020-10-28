@@ -1,3 +1,3 @@
-class INSTRUMENT < ActiveRecord::Base
+class Instrument < ActiveRecord::Base
     belongs_to :user 
 end
