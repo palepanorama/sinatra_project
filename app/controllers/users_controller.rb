@@ -1,15 +1,16 @@
 class UsersController < ApplicationController 
 
+    get '/login' do 
+        erb :'users/login'
+    end 
+
+    post '/login' do 
+    end 
+
     get '/signup' do 
         erb :'users/signup'
     end 
 
     post '/signup' do 
-        user = User.new(:username => params[:username], :password => params[:password])
-        if user.username != "" && user.save 
-            redirect '/login'
-        else 
-            redirect '/error'
-        end 
     end 
 end 
