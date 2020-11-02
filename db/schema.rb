@@ -14,8 +14,9 @@
 ActiveRecord::Schema.define(version: 20201027133844) do
 
   create_table "instruments", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string  "name"
+    t.integer "practice_time"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|

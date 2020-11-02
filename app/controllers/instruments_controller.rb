@@ -1,7 +1,6 @@
 class InstrumentsController < ApplicationController
 
   get "/instruments" do
-    binding.pry 
     if logged_in? 
       @instruments = current_user.instruments 
       erb :'/instruments/index'
