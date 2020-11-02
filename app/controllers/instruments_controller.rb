@@ -64,7 +64,15 @@ end
 
 
   delete "/instruments/:id/delete" do
-    redirect "/instruments"
+    if logged_in? 
+      @instruments = current_user.find_by(id: params[:id])
+      if @instruments
+        @instruments.destroy 
+      end 
+      redirect '/instruments'
+    else 
+      redirect 'login'
+    end 
   end
 
 end 
