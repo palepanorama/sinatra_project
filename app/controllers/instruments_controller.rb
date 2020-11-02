@@ -33,8 +33,7 @@ class InstrumentsController < ApplicationController
 
   get '/instruments/:id/edit' do
     if logged_in?
-        @instrument = current_user.instruments.find_by(id: params[:id])
-        # binding.pry 
+        @instrument = current_user.instruments.find_by(id: params[:id]) 
         erb :'instruments/edit'
     else 
         redirect '/login'
