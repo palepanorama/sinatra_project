@@ -5,7 +5,8 @@ class ApplicationController < Sinatra::Base
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
-    enable :sessions 
+    enable :sessions
+    set :session_secret, 'blah'
   end
 
   get '/' do
@@ -16,9 +17,9 @@ class ApplicationController < Sinatra::Base
     def logged_in?
       !!session[:user_id]
     end
-
+    
     def current_user
-      User.find(session[:user_id])
+      @user ||= User.find_by(id: session[:user_id]) if logged_in?
     end
   end
 
