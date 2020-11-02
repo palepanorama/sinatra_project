@@ -1,21 +1,19 @@
 class InstrumentsController < ApplicationController
 
   get "/instruments" do
-    if logged_in? 
-      @instruments = current_user.instruments 
-      binding.pry 
-      erb :'instruments/index'
-    else 
-      redirect '/error'
-    end 
+
   end
 
   get "/instruments/new" do
-    erb :"/instruments/new.html"
+    if logged_in? 
+      erb :'instruments/new'
+    else 
+      redirect 'login'
+    end 
   end
 
   post "/instruments" do
-    redirect "/instruments"
+
   end
 
 

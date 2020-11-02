@@ -3,13 +3,18 @@ class SessionsController < ApplicationController
         erb :'/sessions/login'
     end 
 
-    post '/login' do 
-        @user = User.find_by(username: params[:username])
-        if @user && @user.authenticate(params[:password])
-            session[:user_id] = @user.id 
-            redirect '/instruments'
-        else 
-            redirect '/error'
-        end 
+    post "/login" do
+        user = User.find_by(username: params[:username])
+        if user && user.authenticate(params[:password])
+          session[:user_id] = user.id
+          redirect "/instruments"
+        else
+          erb :error 
+        end
+    end
+
+    get '/logout' do 
+        session.clear 
+        redirect 'login'
     end 
 end 
