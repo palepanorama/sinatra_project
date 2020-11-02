@@ -1,1 +1,5 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h1>Here is a log of your instruments and the time you spent practicing.</h1><br>
+
+<h3><%= @instrument.name %></h3><br>
+<p><%= @instrument.practice_time %></p><br>
+<button><a href="/instruments/<%= @instrument.id %>/edit">Edit</a></button>

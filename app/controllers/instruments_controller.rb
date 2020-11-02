@@ -42,8 +42,18 @@ class InstrumentsController < ApplicationController
   end
 
   get "/instruments/:id/edit" do
-    erb :"/instruments/edit.html"
-  end
+    if logged_in?
+        @instrument = current_user.instruments.find_by(params)
+        if @instrument
+            erb :'instruments/edit'
+        else
+            redirect '/instruments'
+        end
+    else
+        redirect '/login'
+    end
+       
+end
 
   patch "/instruments/:id" do
     redirect "/instruments/:id"
