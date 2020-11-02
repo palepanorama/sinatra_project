@@ -18,8 +18,18 @@ class InstrumentsController < ApplicationController
   end
 
   post "/instruments" do
+    if logged_in?
+      instrument = current_user.instruments.create(name: params[:name], practice_time: params[:practice_time])
+      if instrument 
+        redirect '/instruments/:id'
+      else 
+        redirect '/instruments/new'
+      end 
 
-  end
+    else 
+      redirect 'login'        
+    end 
+  end 
 
 
   get "/instruments/:id" do
