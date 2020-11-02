@@ -31,29 +31,24 @@ class InstrumentsController < ApplicationController
     end 
   end 
 
+  get '/instruments/:id/edit' do
+    if logged_in?
+        @instrument = current_user.instruments.find_by(id: params[:id])
+        # binding.pry 
+        erb :'instruments/edit'
+    else 
+        redirect '/login'
+    end 
+end
 
   get "/instruments/:id" do
-    @instruments = Instrument.find_by(id: params[:id])
-    if @instruments 
+    @instrument = Instrument.find_by(id: params[:id])
+    if @instrument
       erb :'instruments/show'
     else 
       redirect '/instruments'
     end 
   end
-
-  get "/instruments/:id/edit" do
-    if logged_in?
-        @instrument = current_user.instruments.find_by(params)
-        if @instrument
-            erb :'instruments/edit'
-        else
-            redirect '/instruments'
-        end
-    else
-        redirect '/login'
-    end
-       
-end
 
   patch "/instruments/:id" do
     redirect "/instruments/:id"
