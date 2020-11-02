@@ -51,11 +51,23 @@ end
   end
 
   patch "/instruments/:id" do
-    redirect "/instruments/:id"
+    if logged_in? 
+      instrument = current_user.instruments.find_by(id: params[:id])
+      instrument.update(
+        name: params[:name],
+        practice_time: params[:practice_time])
+        redirect '/instruments'
+    else 
+      redirect '/login'
+    end 
   end
+
 
   delete "/instruments/:id/delete" do
     redirect "/instruments"
   end
 
-end
+end 
+
+
+
