@@ -4,9 +4,10 @@ class SessionsController < ApplicationController
     end 
 
     post "/login" do
-        user = User.find_by(username: params[:username])
-        if user && user.authenticate(params[:password])
-          session[:user_id] = user.id
+        @user = User.find_by(username: params[:username])
+        binding.pry 
+        if @user && @user.authenticate(params[:password])
+          session[:user_id] = @user.id
           redirect "/instruments"
         else
           erb :error 
@@ -15,6 +16,6 @@ class SessionsController < ApplicationController
 
     get '/logout' do 
         session.clear 
-        redirect 'login'
+        redirect '/'
     end 
 end 
